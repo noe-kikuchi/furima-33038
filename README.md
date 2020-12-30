@@ -47,6 +47,7 @@
 ### Association
 
 - belongs_to :user
+- belongs_to :item
 - has_one :ship
 
 ## ships テーブル
@@ -61,3 +62,4 @@
 | phone_number  | string     | null: false                    |
 | buy           | references | null: false, foreign_key: true |
 
+- belongs_to :buy
