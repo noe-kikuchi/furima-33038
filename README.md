@@ -2,18 +2,18 @@
 
 ## users テーブル
 
-| Column         | Type   | Options     |
-| -------------- | ------ | ----------- |
-| nickname       | string | null: false |
-| email          | string | null: false |
-| password       | string | null: false |
-| lastname       | string | null: false |
-| firstname      | string | null: false |
-| lastname_kana  | string | null: false |
-| firstname_kana | string | null: false |
-| birth_date1    | string | null: false |
-| birth_date2    | string | null: false |
-| birth_date3    | string | null: false |
+| Column             | Type    | Options     |
+| ------------------ | ------- | ----------- |
+| nickname           | string  | null: false |
+| email              | string  | null: false |
+| encrypted_password | string  | null: false |
+| lastname           | string  | null: false |
+| firstname          | string  | null: false |
+| lastname_kana      | string  | null: false |
+| firstname_kana     | string  | null: false |
+| birth_yyyy_id      | date    | null: false |
+| birth_mm_id        | date    | null: false |
+| birth_dd_id        | date    | null: false |
 
 ### Association
 
@@ -22,18 +22,17 @@
 
 ## items テーブル
 
-| Column                | Type       | Options                       |
-| --------------------- | ---------- | ----------------------------- |
-| name                  | string     | null: false                   |
-| image                 |            | null: false                   |
-| info                  | text       | null: false                   |
-| category              | string     | null: false                   |
-| state                 | string     | null: false                   |
-| delivery_fee          | string     | null: false                   |
-| delivery_pretecture   | string     | null: false                   |
-| feescheduled_delivery | string     | null: false                   |
-| price                 | string     | null: false                   |
-| user                  | references | null: false, foreign_key: true|
+| Column                   | Type        | Options                        |
+| ------------------------ | ----------- | ------------------------------ |
+| name                     | string      | null: false                    |
+| info                     | text        | null: false                    |
+| category_id              | integer     | null: false                    |
+| state_id                 | integer     | null: false                    |
+| delivery_fee_id          | integer     | null: false                    |
+| pretecture_id            | integer     | null: false                    |
+| feescheduled_delivery_id | integer     | null: false                    |
+| price                    | integer     | null: false                    |
+| user                     | references  | null: false, foreign_key: true |
 
 ### Association
 
@@ -44,10 +43,6 @@
 
 | Column               | Type       | Options                        |
 | -------------------- | ---------- | ------------------------------ |
-| card number          | string     | null: false                    |
-| expirationdate_month | string     | null: false                    |
-| expirationdate_year  | string     | null: false                    |
-| security_number      | string     | null: false                    |
 | user                 | references | null: false, foreign_key: true |
 | item                 | references | null: false, foreign_key: true |
 
@@ -60,11 +55,11 @@
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
-| postal_code   | string     | null: false                    |
-| prefecture    | string     | null: false                    |
+| postal_code   | integer    | null: false                    |
+| prefecture_id | integer    | null: false                    |
 | city          | string     | null: false                    |
 | address       | string     | null: false                    |
-| building_name | string     | null: false                    |
-| phone_number  | string     | null: false                    |
+| building_name | string     |                                |
+| phone_number  | integer    | null: false                    |
 | buy           | references | null: false, foreign_key: true |
 
