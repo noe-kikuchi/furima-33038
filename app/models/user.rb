@@ -8,18 +8,15 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   validates :password,length: { minimum: 6 }
   validates :password, format: { with: /\A[a-z0-9]+\z/i }
-  validates :lastname,presence: true
-  validates :firstname,presence: true
-  validates :lastname_kana,presence: true
-  validates :lastname_kana, format: { with: /\A[ァ-ヶー－]+\z/ }
-  validates :firstname_kana,presence: true
-  validates :firstname_kana, format: { with: /\A[ァ-ヶー－]+\z/ }
+  validates :last_name, presence: true
+  validates :last_name, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
+  validates :first_name, presence: true
+  validates :first_name, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
+  validates :last_name_kana,presence: true
+  validates :last_name_kana, format: { with: /\A[ァ-ヶー－]+\z/ }
+  validates :first_name_kana,presence: true
+  validates :first_name_kana, format: { with: /\A[ァ-ヶー－]+\z/ }
   validates :birth_date_id,presence: true
 end
 
 
-  # validates :email,presence: true
-  # validates :password,presence: true
-  # validates :email, inclusion: { in: ["@"] }
-  # # validates :password, password_confirmation: true
-  # /\A(?=.&#042;?[a-z])(?=.&#042;?\d)[a-z\d]+\z/i
