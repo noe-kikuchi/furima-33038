@@ -16,5 +16,3 @@ class User < ApplicationRecord
     validates :birth_date_id
   end
 end
-
-
