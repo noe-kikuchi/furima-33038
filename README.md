@@ -19,7 +19,7 @@
 - has_many :buys
 
 ## items テーブル
-
+ 
 | Column                   | Type        | Options                        |
 | ------------------------ | ----------- | ------------------------------ |
 | name                     | string      | null: false                    |
