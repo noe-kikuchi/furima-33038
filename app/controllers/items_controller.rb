@@ -19,6 +19,8 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @buy = Buy.new
+    # @buys = @item.buys.include(:user)
   end
 
   def edit
