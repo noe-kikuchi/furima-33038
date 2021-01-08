@@ -1,26 +1,36 @@
 class BuysController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
+  before_action :set_item, only: [:index, :create]
 
   def index
-    @buy = Buy.new
-    @item = Item.find(params[:item_id])
+    @buy_ship = BuyShip.new
     if current_user.id == @item.user_id
       redirect_to root_path 
     end
   end
 
+  def new
+  end
+
   def create
-    @buy = Buy.new(buy_params)
-    if @buy.save
+    
+    @buy_ship = BuyShip.new(ship_params)
+    if @buy_ship.valid?
+      @buy_ship.save
       redirect_to root_path
     else
-      render 'index'
+      render action: :index
     end
   end
 
   private
 
-  def buy_params
-    params.require(:buy).merge(user_id: current_user.id, item_id: params[:item_id])
+  def ship_params
+    params.require(:buy_ship).permit(:postal_code, :prefecture_id, :city, :address, :building_name, :phone_number ).merge(user_id: current_user.id, item_id: params[:item_id])
+  end
+
+  def set_item
+    @item = Item.find(params[:item_id])
   end
 end
+
