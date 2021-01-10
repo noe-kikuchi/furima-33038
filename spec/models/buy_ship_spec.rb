@@ -13,51 +13,51 @@ RSpec.describe BuyShip, type: :model do
     end
     context '商品を購入できない場合' do
       it 'postal_codeが空では投稿できない' do
-        @buy_ship.postal_code = ""
+        @buy_ship.postal_code = ''
         @buy_ship.valid?
         expect(@buy_ship.errors.full_messages).to include "Postal code can't be blank"
       end
       it '郵便番号にはハイフンが必要であること' do
-        @buy_ship.postal_code = 7970035
+        @buy_ship.postal_code = 7_970_035
         @buy_ship.valid?
-        expect(@buy_ship.errors.full_messages).to include "Postal code is invalid"
+        expect(@buy_ship.errors.full_messages).to include 'Postal code is invalid'
       end
       it 'prefecture_idが空では投稿できない' do
-        @buy_ship.prefecture_id = ""
+        @buy_ship.prefecture_id = ''
         @buy_ship.valid?
         expect(@buy_ship.errors.full_messages).to include "Prefecture can't be blank"
       end
       it 'prefecture_idが1では投稿できない' do
-        @buy_ship.prefecture_id = "1"
+        @buy_ship.prefecture_id = '1'
         @buy_ship.valid?
-        expect(@buy_ship.errors.full_messages).to include "Prefecture must be other than 1"
+        expect(@buy_ship.errors.full_messages).to include 'Prefecture must be other than 1'
       end
       it 'cityが空では投稿できない' do
-        @buy_ship.city = ""
+        @buy_ship.city = ''
         @buy_ship.valid?
         expect(@buy_ship.errors.full_messages).to include "City can't be blank"
       end
       it 'addressが空では投稿できない' do
-        @buy_ship.address = ""
+        @buy_ship.address = ''
         @buy_ship.valid?
         expect(@buy_ship.errors.full_messages).to include "Address can't be blank"
       end
       it 'phone_numberが空では投稿できない' do
-        @buy_ship.phone_number = ""
+        @buy_ship.phone_number = ''
         @buy_ship.valid?
         expect(@buy_ship.errors.full_messages).to include "Phone number can't be blank"
       end
       it '電話番号にはハイフンがあると登録できない' do
-        @buy_ship.phone_number = "090-9779-1996"
+        @buy_ship.phone_number = '090-9779-1996'
         @buy_ship.valid?
-        expect(@buy_ship.errors.full_messages).to include "Phone number is invalid"
+        expect(@buy_ship.errors.full_messages).to include 'Phone number is invalid'
       end
       it '電話番号には11桁以上であると登録できない' do
-        @buy_ship.phone_number = "111111111111"
+        @buy_ship.phone_number = '111111111111'
         @buy_ship.valid?
-        expect(@buy_ship.errors.full_messages).to include "Phone number is invalid"
+        expect(@buy_ship.errors.full_messages).to include 'Phone number is invalid'
       end
-      it "tokenが空では登録できないこと" do
+      it 'tokenが空では登録できないこと' do
         @buy_ship.token = nil
         @buy_ship.valid?
         expect(@buy_ship.errors.full_messages).to include("Token can't be blank")
@@ -65,4 +65,3 @@ RSpec.describe BuyShip, type: :model do
     end
   end
 end
-

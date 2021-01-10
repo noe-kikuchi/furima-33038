@@ -4,9 +4,7 @@ class BuysController < ApplicationController
 
   def index
     @buy_ship = BuyShip.new
-    if current_user.id == @item.user_id
-      redirect_to root_path 
-    end
+    redirect_to root_path if current_user.id == @item.user_id
   end
 
   def new
@@ -26,7 +24,9 @@ class BuysController < ApplicationController
   private
 
   def ship_params
-    params.require(:buy_ship).permit(:postal_code, :prefecture_id, :city, :address, :building_name, :phone_number ).merge(user_id: current_user.id, item_id: params[:item_id],token: params[:token])
+    params.require(:buy_ship).permit(:postal_code, :prefecture_id, :city, :address, :building_name, :phone_number).merge(
+      user_id: current_user.id, item_id: params[:item_id], token: params[:token]
+    )
   end
 
   def set_item
@@ -34,7 +34,7 @@ class BuysController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       amount: @item[:price],
       card: ship_params[:token],
@@ -42,4 +42,3 @@ class BuysController < ApplicationController
     )
   end
 end
-

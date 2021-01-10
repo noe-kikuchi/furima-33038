@@ -3,5 +3,4 @@ class Ship < ApplicationRecord
   belongs_to :prefecture
 
   belongs_to :buy
-  
 end
