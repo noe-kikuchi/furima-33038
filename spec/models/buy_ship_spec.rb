@@ -10,6 +10,10 @@ RSpec.describe BuyShip, type: :model do
       it '全ての項目の入力が存在すれば購入できること' do
         expect(@buy_ship).to be_valid
       end
+      it 'building_nameが空であっても購入できること' do
+        @buy_ship.building_name = ""
+        @buy_ship.valid?
+      end
     end
     context '商品を購入できない場合' do
       it 'postal_codeが空では投稿できない' do
