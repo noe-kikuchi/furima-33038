@@ -11,7 +11,7 @@ RSpec.describe BuyShip, type: :model do
         expect(@buy_ship).to be_valid
       end
     end
-    context '商品を出品できる場合' do
+    context '商品を購入できない場合' do
       it 'postal_codeが空では投稿できない' do
         @buy_ship.postal_code = ""
         @buy_ship.valid?
@@ -56,6 +56,11 @@ RSpec.describe BuyShip, type: :model do
         @buy_ship.phone_number = "111111111111"
         @buy_ship.valid?
         expect(@buy_ship.errors.full_messages).to include "Phone number is invalid"
+      end
+      it "tokenが空では登録できないこと" do
+        @buy_ship.token = nil
+        @buy_ship.valid?
+        expect(@buy_ship.errors.full_messages).to include("Token can't be blank")
       end
     end
   end
