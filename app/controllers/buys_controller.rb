@@ -4,7 +4,9 @@ class BuysController < ApplicationController
 
   def index
     @buy_ship = BuyShip.new
-    redirect_to root_path if current_user.id == @item.user_id
+    if current_user.id == @item.user_id || Buy.exists?(item_id: @item.id)
+      redirect_to root_path 
+    end
   end
 
   def new
