@@ -19,6 +19,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @buy = Buy.new
   end
 
   def edit
