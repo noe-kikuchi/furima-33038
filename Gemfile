@@ -34,7 +34,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 4.0.0'
   gem 'factory_bot_rails'
   gem 'faker'
-  gem"gimei"
+  gem 'gimei'
 end
 
 group :development do
@@ -69,3 +69,4 @@ gem 'image_processing', '~> 1.2'
 gem 'active_hash'
 gem 'payjp'
 gem "aws-sdk-s3", require: false
+gem 'rails-i18n'
